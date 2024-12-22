@@ -16,4 +16,18 @@ def locate_ui_element(url, selector_type, selector_value):
         driver.get(url)
         
         print(f"Locating element by {selector_type} with value {selector_value}")
+        element = driver.find_element(getattr(By, selector_type.upper()), selector_value)
+        
+        print("Element located successfully")
+        print(f"Tag Name: {element.tag_name}")
+        print(f"Text: {element.text if element.text else 'No visible text'}")
+        
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        
+    finally:
+        driver.quit()
+        
+if __name__ == '__main__':
+    
     
